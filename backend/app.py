@@ -4,7 +4,7 @@ from pycaret.classification import load_model, predict_model
 import pandas as pd
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Load model once
 model = load_model("churn_model")
