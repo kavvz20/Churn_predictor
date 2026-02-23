@@ -1,0 +1,80 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;   /* reduced from 80px */
+  background-color: transparent;
+  transition: 0.3s ease;
+  z-index: 1000;
+  box-sizing: border-box;  /* VERY IMPORTANT */
+}
+
+.navbar.scrolled {
+  background-color: rgba(11, 15, 25, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.nav-links li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-links li:hover {
+  color: white;
+}
+
+.nav-button {
+  background-color: #2563eb;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #1d4ed8;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 20px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-button {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+}
+.nav-links a {
+  text-decoration: none;
+  color: #aaa;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
