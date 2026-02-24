@@ -7,7 +7,9 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Load model once
-model = load_model("churn_model")
+import os
+model_path = os.path.join("backend", "churn_model")
+model = load_model(model_path)
 
 
 @app.route("/predict", methods=["POST"])
