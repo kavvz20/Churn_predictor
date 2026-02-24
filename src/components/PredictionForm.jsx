@@ -49,7 +49,7 @@ function PredictionForm() {
     setLoading(true);
     setResult(null);
     try {
-      const response = await fetch("https://churn-2bza.onrender.com/predict", {
+      const response = await fetch("https://churn-wx00.onrender.com/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -225,18 +225,11 @@ function PredictionForm() {
           </button>
         </form>
         {result && (
-          <div className="result-card">
-            <h3>Prediction Result</h3>
-            <p><strong>Status:</strong> {result.prediction}</p>
-            <p><strong>Probability:</strong> {(result.probability * 100).toFixed(2)}%</p>
-            <p>
-              <strong>Risk Level:</strong>{" "}
-              <span className={`risk ${result.riskLevel.toLowerCase()}`}>
-                {result.riskLevel}
-              </span>
-            </p>
-          </div>
-        )}
+  <div className="result-card">
+    <h3>Prediction Result</h3>
+    <p><strong>Status:</strong> {result.prediction}</p>
+  </div>
+)}
       </div>
     </section>
   );
