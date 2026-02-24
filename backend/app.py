@@ -8,7 +8,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Load model once
 import os
-model_path = os.path.join("backend", "churn_model")
+model_path = os.path.join("backend", "churn_model1")
 model = load_model(model_path)
 
 @app.route("/")
