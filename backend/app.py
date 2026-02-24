@@ -13,7 +13,9 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Load model once
 try:
-    model_path = os.path.join(os.path.dirname(__file__), "churn_model1")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(BASE_DIR, "churn_model1")
+    print("Loading model from:", model_path)
     model = load_model(model_path)
     print("✅ Model loaded successfully!")
 except Exception as e:
