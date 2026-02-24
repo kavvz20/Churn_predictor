@@ -4,8 +4,7 @@
 **Model:** PyCaret AutoML Classification Pipeline  
 **Course:** UCS321 Mini Project  
 **Theme:** IBM Watson Analytics — Subscription Service Churn Reduction  
-**Live Demo:** [https://churn-three.vercel.app](https://churn-three.vercel.app)  
-**Backend API:** [https://churn-wx00.onrender.com](https://churn-wx00.onrender.com)  
+**Live Demo:** [https://churn-three.vercel.app](https://churn-three.vercel.app)   
 **Repository:** [kavvz20/Churn_predictor](https://github.com/kavvz20/Churn_predictor)  
 **Date:** 2026
 
