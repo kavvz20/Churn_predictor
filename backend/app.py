@@ -16,24 +16,32 @@ def home():
     return "Backend is working"
 
 
+from flask import request, jsonify
+import pandas as pd
+
 @app.route("/predict", methods=["POST"])
 def predict():
-    data = request.json
-    
-    input_df = pd.DataFrame([data])
-    
-    prediction = predict_model(model, data=input_df)
-    
-    result = prediction["prediction_label"][0]
-    probability = prediction["prediction_score"][0]
-    
-    risk = "High" if probability > 0.7 else "Medium" if probability > 0.4 else "Low"
-    
-    return jsonify({
-        "prediction": result,
-        "probability": float(probability),
-        "riskLevel": risk
-    })
+    try:
+        data = request.get_json()
+        print("Received JSON:", data)
+
+        df = pd.DataFrame([data])
+        print("Constructed DataFrame:")
+        print(df)
+
+        prediction = predict_model(model, data=df)
+        print("Raw Prediction Output:")
+        print(prediction)
+
+        result = prediction.iloc[0]["prediction_label"]
+
+        return jsonify({
+            "prediction": result
+        })
+
+    except Exception as e:
+        print("ERROR OCCURRED:", str(e))
+        return jsonify({"error": str(e)}), 500
 
 
 import os
