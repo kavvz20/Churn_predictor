@@ -11,6 +11,10 @@ import os
 model_path = os.path.join("backend", "churn_model")
 model = load_model(model_path)
 
+@app.route("/")
+def home():
+    return "Backend is working"
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
