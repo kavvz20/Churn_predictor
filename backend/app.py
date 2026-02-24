@@ -2,26 +2,37 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pycaret.classification import load_model, predict_model
 import pandas as pd
+import os
+import logging
+import traceback
+
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Load model once
-import os
-model_path = os.path.join("backend", "churn_model1")
-model = load_model(model_path)
+try:
+    model_path = os.path.join(os.path.dirname(__file__), "churn_model1")
+    model = load_model(model_path)
+    print("✅ Model loaded successfully!")
+except Exception as e:
+    print("❌ Model loading failed:", str(e))
+    print(traceback.format_exc())
+    model = None
+
 
 @app.route("/")
 def home():
     return "Backend is working"
 
 
-from flask import request, jsonify
-import pandas as pd
-
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
+        if model is None:
+            return jsonify({"error": "Model not loaded"}), 500
+
         data = request.get_json()
         print("Received JSON:", data)
 
@@ -35,16 +46,13 @@ def predict():
 
         result = prediction.iloc[0]["prediction_label"]
 
-        return jsonify({
-            "prediction": result
-        })
+        return jsonify({"prediction": result})
 
     except Exception as e:
-        print("ERROR OCCURRED:", str(e))
+        print("❌ ERROR:", str(e))
+        print(traceback.format_exc())
         return jsonify({"error": str(e)}), 500
 
-
-import os
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
