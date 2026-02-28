@@ -407,7 +407,7 @@ https://churn-three.vercel.app
      │  POST /predict (JSON)
      ▼
 Flask Backend (Render)
-https://churn-wx00.onrender.com
+
      │  predict_model()
      ▼
 PyCaret Pipeline (churn_model1.pkl)
