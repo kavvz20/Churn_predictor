@@ -424,8 +424,7 @@ PyCaret Pipeline (churn_model1.pkl)
 | Runtime | Python 3.x |
 | Framework | Flask + Gunicorn |
 | Build Command | `pip install -r backend/requirements.txt` |
-| Start Command | `gunicorn backend.app:app` |
-| URL | https://churn-wx00.onrender.com |
+| Start Command | `gunicorn backend.app:app` 
 
 ### Frontend (Vercel)
 
